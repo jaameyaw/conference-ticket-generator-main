@@ -1,0 +1,19 @@
+
+.hero {
+  background-image: 
+    url("images/pattern-circle.svg"),
+    url("images/pattern-lines.svg"),
+    url("images/background-desktop.png");
+  background-size: 180px, auto, cover;
+  background-repeat: no-repeat;
+  background-position: 70% center, center, center;
+  height: 100vh;
+}
+
+.hero-overlay {
+  background-image:  url("images/pattern-squiggly-line-top.svg"),
+    url("images/pattern-squiggly-line-bottom-desktop.svg");
+  background-repeat: no-repeat;
+  background-position: top right, bottom left;
+  height: 100%;
+}
