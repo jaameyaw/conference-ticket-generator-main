@@ -1,8 +1,11 @@
-import React from "react";
+import '../App.css'
 
-function Title({ title }) {
+function Title({ title = 'Your Journey to Coding Conf', nLine = '2025 Starts Here!' }) {
     return (
-        <h2 className="title">{title}</h2>
+        <h2 className="title">
+            {title} <br /> {nLine}
+        </h2>
     )
 }
-export default Title;
+
+export default Title
