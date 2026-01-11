@@ -8,8 +8,12 @@ function App() {
     <>
       <section className="hero">
         <div className="hero-overlay">
-          <div className="img-container">
-            <img src="" alt="" />
+          <div className="hero-content">
+            <div className="img-container">
+              <img src="/images/logo-full.svg" alt="Conference logo" />
+            </div>
+
+            <Title/>
           </div>
 
           <Title title="Your Journey to Coding Conf 2025 Starts Here!" />
