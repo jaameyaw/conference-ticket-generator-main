@@ -16,7 +16,6 @@ function App() {
             <Title/>
           </div>
 
-          <Title title="Your Journey to Coding Conf 2025 Starts Here!" />
         </div>
       </section>
     </>
