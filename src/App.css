@@ -17,3 +17,10 @@
   background-position: top right, bottom left;
   height: 100%;
 }
+.title {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 40px;
+}
