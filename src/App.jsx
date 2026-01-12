@@ -1,6 +1,7 @@
 
 import './App.css'
-import Title from './components/Title'
+import Title from './components/Title';
+import HeroParagraph from './components/HeroParagrahp';
 function App() {
 
 
@@ -14,6 +15,7 @@ function App() {
             </div>
 
             <Title/>
+            <HeroParagraph/>
           </div>
 
         </div>
