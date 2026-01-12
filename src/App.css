@@ -1,3 +1,6 @@
+body {
+  font-family: 'Inconsolata', monospace;
+}
 
 .hero {
   background-image: 
@@ -28,9 +31,16 @@
 }
 
 .title {
-  font-family: 'Inconsolata', monospace;
   font-weight: 700;
   font-size: 2rem;
   color: #ffffff;
   margin-top: 40px;
+}
+
+.hero-paragraph {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: hsl(252, 6%, 83%);
+  margin: 20px 0 0 0;
+  padding: 0 20px;
 }
