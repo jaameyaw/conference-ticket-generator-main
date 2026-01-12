@@ -1,3 +1,6 @@
+body {
+  font-family: 'Inconsolata', monospace;
+}
 
 .hero {
   background-image: 
@@ -8,6 +11,7 @@
   background-repeat: no-repeat;
   background-position: 70% center, center, center;
   height: 100vh;
+
 }
 
 .hero-overlay {
@@ -16,4 +20,27 @@
   background-repeat: no-repeat;
   background-position: top right, bottom left;
   height: 100%;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 40px;
+}
+
+.hero-paragraph {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: hsl(252, 6%, 83%);
+  margin: 20px 0 0 0;
+  padding: 0 20px;
 }
