@@ -2,8 +2,9 @@
 import './App.css'
 import Title from './components/Title';
 import HeroParagraph from './components/HeroParagrahp';
-function App() {
+import TicketForm from './components/TicketForm';
 
+function App() {
 
   return (
     <>
@@ -16,10 +17,13 @@ function App() {
 
             <Title/>
             <HeroParagraph/>
+            <TicketForm/>
           </div>
 
         </div>
       </section>
+      
+      
     </>
   )
 }
