@@ -32,16 +32,14 @@
   border: 2px dashed #6b5b95;
   border-radius: 12px;
   text-align: center;
-  cursor: pointer;
   transition: all 0.3s ease;
   background-color: rgba(107, 91, 149, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   position: relative;
-  min-height: 100px;
+  min-height: 95px;
 }
 
 .upload-area:hover {
@@ -54,9 +52,10 @@
 }
 
 .upload-icon {
-  width: 30px;
-  height: 30px;
-  opacity: 0.7;
+  width: 25px;
+  height: 25px;
+  opacity: 0.7;;
+  margin-top: -15px;
 }
 
 .upload-area > div {
@@ -69,15 +68,42 @@
 .upload-area p {
   color: #b0a4c8;
   font-size: 12px;
-  margin: 0;
   letter-spacing: 0.3px;
+  margin-top: -5px;
 }
 
 .avatar-preview {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 12px;
+  margin-top: -1.5rem;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-btn {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.delete-btn:hover {
+  background-color: #e74c3c;
+  color: white;
 }
 
 .hint {
