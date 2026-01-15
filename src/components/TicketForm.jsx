@@ -2,7 +2,7 @@ import '../styles/TicketForm.css';
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function TicketForm() {
@@ -18,6 +18,10 @@ export default function TicketForm() {
         }
     }
 
+    const handleDeleteAvatar = () => {
+        setAvatar(null);
+    }
+
     return (
         <form  className="ticket-form">
             <div className="form-container">
@@ -27,7 +31,12 @@ export default function TicketForm() {
                         <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} />
 
                         {avatar ? (
-                            <img src={avatar} alt="Avatar Preview" className="avatar-preview" /> 
+                            <div className="avatar-container">
+                                <img src={avatar} alt="Avatar Preview" className="avatar-preview" />
+                                <button type="button" className="delete-btn" onClick={handleDeleteAvatar}>
+                                    <FontAwesomeIcon icon={faTrash} /> Remove
+                                </button>
+                            </div>
                         ) : ( 
                             <div>
                                 <label htmlFor="avatar-input">
