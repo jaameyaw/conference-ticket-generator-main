@@ -38,7 +38,7 @@ export default function TicketForm() {
         <form  className="ticket-form">
             <div className="form-container">
                 <div className="upload-section">
-                    <label htmlFor="">Upload Avatar</label>
+                    <label htmlFor="avatar-input">Upload Avatar</label>
                     <div className="upload-area" onClick={uploadAreaClick}>
                         <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} ref={fileInputRef} />
                         {avatar ? (
