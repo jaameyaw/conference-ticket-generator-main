@@ -1,12 +1,14 @@
 import '../styles/TicketForm.css';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function TicketForm() {
     const [avatar, setAvatar] = useState(null);
+
+    const fileInputRef = useRef(null);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -16,10 +18,20 @@ export default function TicketForm() {
             reader.onload = (event) => setAvatar (event.target.result);
             reader.readAsDataURL(file);
         }
+        
+        // Reset input value to allow selecting the same file again
+        e.target.value = '';
+    }
+
+    const uploadAreaClick = () => { 
+        fileInputRef.current?.click();
     }
 
     const handleDeleteAvatar = () => {
-        setAvatar(null);
+        setAvatar (null);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
     }
 
     return (
@@ -27,22 +39,25 @@ export default function TicketForm() {
             <div className="form-container">
                 <div className="upload-section">
                     <label htmlFor="">Upload Avatar</label>
-                    <div className="upload-area">
-                        <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} />
-
+                    <div className="upload-area" onClick={uploadAreaClick}>
+                        <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} ref={fileInputRef} />
                         {avatar ? (
                             <div className="avatar-container">
                                 <img src={avatar} alt="Avatar Preview" className="avatar-preview" />
-                                <button type="button" className="delete-btn" onClick={handleDeleteAvatar}>
+                                <button 
+                                    type="button" 
+                                    className="delete-btn" 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteAvatar();
+                                    }}
+                                >
                                     <FontAwesomeIcon icon={faTrash} /> Remove
                                 </button>
                             </div>
                         ) : ( 
                             <div>
-                                <label htmlFor="avatar-input">
-                                    <img src="/images/icon-upload.svg" alt="Upload Icon" className="upload-icon" />
-                                </label>
-                                
+                                <img src="/images/icon-upload.svg" alt="Upload Icon" className="upload-icon" />
                                 <p>Drag and drop or click to upload</p>
                             </div>
 
