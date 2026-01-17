@@ -23,7 +23,7 @@ export default function TicketForm() {
         e.target.value = '';
     }
 
-    const uploadAreaClick = () => { 
+    const handleUploadAreaClick = () => { 
         fileInputRef.current?.click();
     }
 
@@ -39,7 +39,7 @@ export default function TicketForm() {
             <div className="form-container">
                 <div className="upload-section">
                     <label htmlFor="avatar-input">Upload Avatar</label>
-                    <div className="upload-area" onClick={uploadAreaClick}>
+                    <div className="upload-area" onClick={handleUploadAreaClick}>
                         <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} ref={fileInputRef} />
                         {avatar ? (
                             <div className="avatar-container">
