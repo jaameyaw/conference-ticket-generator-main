@@ -65,7 +65,8 @@ export default function TicketForm() {
         <form  className="ticket-form">
             <div className="form-container">
                 <div className="upload-section">
-                    <label htmlFor="avatar-input">Upload Avatar Photo</label>
+                    <label htmlFor="avatar-input">Upload Profile Picture</label>
+
                     <div 
                         className={`upload-area ${isDragOver ? 'drag-over' : ''}`}
                         onClick={uploadAreaClick} 
