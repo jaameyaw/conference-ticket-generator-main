@@ -7,6 +7,7 @@ import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export default function TicketForm() {
     const [avatar, setAvatar] = useState(null);
+    const [isDragOver, setIsDragOver] = useState(false);
 
     const fileInputRef = useRef(null);
 
@@ -21,6 +22,32 @@ export default function TicketForm() {
         
         // Reset input value to allow selecting the same file again
         e.target.value = '';
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragOver(true);
+    }
+
+    const handleDragLeave = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragOver(false);
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragOver(false);
+
+        const file = e.dataTransfer.files[0];
+
+        if (file && ['image/jpeg', 'image/png'].includes(file.type) && file.size <= 500000) {
+            const reader = new FileReader();
+            reader.onload = (event) => setAvatar (event.target.result);
+            reader.readAsDataURL(file);
+        }
     }
 
     const uploadAreaClick = () => { 
@@ -39,7 +66,13 @@ export default function TicketForm() {
             <div className="form-container">
                 <div className="upload-section">
                     <label htmlFor="avatar-input">Upload Avatar</label>
-                    <div className="upload-area" onClick={uploadAreaClick}>
+                    <div 
+                        className={`upload-area ${isDragOver ? 'drag-over' : ''}`}
+                        onClick={uploadAreaClick} 
+                        onDragOver={handleDragOver}
+                        onDragLeave={handleDragLeave}
+                        onDrop={handleDrop}
+                    >
                         <input type="file" id="avatar-input" accept="image/*" onChange={handleFileChange} ref={fileInputRef} />
                         {avatar ? (
                             <div className="avatar-container">
