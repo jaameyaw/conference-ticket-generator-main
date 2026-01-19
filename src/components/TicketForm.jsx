@@ -8,6 +8,11 @@ import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 export default function TicketForm() {
     const [avatar, setAvatar] = useState(null);
     const [isDragOver, setIsDragOver] = useState(false);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        github: '',
+    });
 
     const fileInputRef = useRef(null);
 
@@ -61,6 +66,15 @@ export default function TicketForm() {
         }
     }
 
+    const handleInputChange = (e) => {
+        const { name, value} = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    }
+
+
     return (
         <form  className="ticket-form">
             <div className="form-container">
@@ -99,6 +113,45 @@ export default function TicketForm() {
                     </div>
                     <p className="hint"><FontAwesomeIcon icon={faCircleInfo} />Upload your photo (JPG or PNG, max size: 500KB).</p>
                 </div>
+
+                <div className="form-fields-section">
+                    <div className="form-group">
+                        <label htmlFor="fullName">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            value={formData.fullName} 
+                            onChange={handleInputChange} 
+                            placeholder="Enter your full name" 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            value={formData.email} 
+                            onChange={handleInputChange} 
+                            placeholder="example@email.com" 
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="github">GitHub Username</label>
+                        <input 
+                            type="text" 
+                            id="github" 
+                            name="github" 
+                            value={formData.github} 
+                            onChange={handleInputChange} 
+                            placeholder="@yourusername" 
+                        />
+                    </div>
+                </div>
+
             </div>
         </form>
     )
