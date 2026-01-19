@@ -151,6 +151,8 @@ export default function TicketForm() {
                         />
                     </div>
                 </div>
+                
+                <button type="submit" className="submit-btn">Generate My Ticket</button>
 
             </div>
         </form>
