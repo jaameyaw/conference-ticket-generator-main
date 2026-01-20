@@ -121,6 +121,10 @@
   gap: 0.4rem;
 }
 
+.hint.error {
+  color: #ff4444;
+}
+
 /* Form Fields Section */
 .form-fields-section {
   display: flex;
