@@ -8,6 +8,7 @@ import { faCircleInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 export default function TicketForm() {
     const [avatar, setAvatar] = useState(null);
     const [isDragOver, setIsDragOver] = useState(false);
+    const [fileError, setFileError] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -19,10 +20,15 @@ export default function TicketForm() {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
 
-        if (file && ['image/jpeg', 'image/png'].includes(file.type) && file.size <= 500000) {
-            const reader = new FileReader();
-            reader.onload = (event) => setAvatar (event.target.result);
-            reader.readAsDataURL(file);
+        if (file && ['image/jpeg', 'image/png'].includes(file.type)) {
+            if (file.size > 500000) {
+                setFileError(true);
+            } else {
+                setFileError(false);
+                const reader = new FileReader();
+                reader.onload = (event) => setAvatar (event.target.result);
+                reader.readAsDataURL(file);
+            }
         }
         
         // Reset input value to allow selecting the same file again
@@ -48,10 +54,15 @@ export default function TicketForm() {
 
         const file = e.dataTransfer.files[0];
 
-        if (file && ['image/jpeg', 'image/png'].includes(file.type) && file.size <= 500000) {
-            const reader = new FileReader();
-            reader.onload = (event) => setAvatar (event.target.result);
-            reader.readAsDataURL(file);
+        if (file && ['image/jpeg', 'image/png'].includes(file.type)) {
+            if (file.size > 500000) {
+                setFileError(true);
+            } else {
+                setFileError(false);
+                const reader = new FileReader();
+                reader.onload = (event) => setAvatar (event.target.result);
+                reader.readAsDataURL(file);
+            }
         }
     }
 
@@ -61,6 +72,7 @@ export default function TicketForm() {
 
     const handleDeleteAvatar = () => {
         setAvatar (null);
+        setFileError(false);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
@@ -111,7 +123,7 @@ export default function TicketForm() {
 
                         )}
                     </div>
-                    <p className="hint"><FontAwesomeIcon icon={faCircleInfo} />Upload your photo (JPG or PNG, max size: 500KB).</p>
+                    <p className={`hint ${fileError ? 'error' : ''}`}><FontAwesomeIcon icon={faCircleInfo} />{fileError ? 'File too large. Please upload a photo under 500KB' : 'Upload your photo (JPG or PNG, max size: 500KB).'}</p>
                 </div>
 
                 <div className="form-fields-section">
