@@ -9,6 +9,12 @@ export default function TicketForm() {
     const [avatar, setAvatar] = useState(null);
     const [isDragOver, setIsDragOver] = useState(false);
     const [fileError, setFileError] = useState(false);
+    const [avatarRequired, setAvatarRequired] = useState(false);
+    const [formErrors, setFormErrors] = useState({
+        fullName: '',
+        email: '',
+        github: '',
+    })
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
