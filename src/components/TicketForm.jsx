@@ -92,6 +92,51 @@ export default function TicketForm() {
         }));
     }
 
+    const validateForm = () => {
+        const errors = {};
+        let isValid = true;
+
+        // Full Name validation
+        const fullNameRegex = /^[a-zA-Z\s]+$/;
+        if (formData.fullName.trim() === '') {
+            errors.fullName = 'Full Name is required';
+            isValid = false;
+        } else if (!fullNameRegex.test(formData.fullName)) {
+            errors.fullName = 'Full Name can only contain letters and spaces';
+            isValid = false;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (formData.email.trim() === '') {
+            errors.email = 'Email is required';
+            isValid = false;
+        } else if (!emailRegex.test(formData.email)) {
+            errors.email = 'Please enter a valid email address';
+            isValid = false;
+        }
+
+        // GitHub Username validation
+        const githubRegex = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
+        if (formData.github.trim() === '') {
+            errors.github = 'GitHub Username is required';
+            isValid = false;
+        } else if (!githubRegex.test(formData.github)) {
+            errors.github = 'Please enter a valid GitHub username';
+        }
+
+        // Avatar validation
+        if (!avatar) {
+            setAvatarRequired(true);
+            isValid = false;
+        } else {
+            setAvatarRequired(false);
+        }
+
+        setFormErrors(errors);
+        return isValid;
+    }
+
 
     return (
         <form  className="ticket-form">
