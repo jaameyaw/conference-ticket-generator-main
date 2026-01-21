@@ -10,7 +10,7 @@ body {
   background-size: 180px, auto, cover;
   background-repeat: no-repeat;
   background-position: 70% center, center, center;
-  height: 100vh;
+  height: 120vh;
 
 }
 
@@ -34,7 +34,7 @@ body {
   font-weight: 700;
   font-size: 2rem;
   color: #ffffff;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .hero-paragraph {
