@@ -145,7 +145,7 @@ export default function TicketForm() {
                     <label htmlFor="avatar-input">Upload Profile Picture</label>
 
                     <div 
-                        className={`upload-area ${isDragOver ? 'drag-over' : ''}`}
+                        className={`upload-area ${isDragOver ? 'drag-over' : ''} ${avatarRequired ? 'upload-error' : ''}`}
                         onClick={uploadAreaClick} 
                         onDragOver={handleDragOver}
                         onDragLeave={handleDragLeave}
@@ -174,7 +174,12 @@ export default function TicketForm() {
 
                         )}
                     </div>
-                    <p className={`hint ${fileError ? 'error' : ''}`}><FontAwesomeIcon icon={faCircleInfo} />{fileError ? 'File too large. Please upload a photo under 500KB' : 'Upload your photo (JPG or PNG, max size: 500KB).'}</p>
+                    <p className={`hint ${fileError ? 'error' : ''} ${avatarRequired ? 'error' : ''}`}>
+                        <FontAwesomeIcon icon={faCircleInfo} />
+                        {fileError ? 'File too large. Please upload a photo under 500KB' 
+                        : avatarRequired ? 'Please upload a profile picture'
+                        : 'Upload your photo (JPG or PNG, max size: 500KB).'}
+                    </p>
                 </div>
 
                 <div className="form-fields-section">
