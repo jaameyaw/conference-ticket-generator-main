@@ -187,7 +187,15 @@ export default function TicketForm() {
                             value={formData.fullName} 
                             onChange={handleInputChange} 
                             placeholder="Enter your full name" 
+                            className={formErrors.fullName ? 'input-error' : ''}
                         />
+                        {formErrors.fullName && 
+                            <p className="error-message">
+                                <FontAwesomeIcon icon={faCircleInfo} /> 
+                                {formErrors.fullName}
+                            </p>
+
+                        }
                     </div>
 
                     <div className="form-group">
@@ -199,7 +207,15 @@ export default function TicketForm() {
                             value={formData.email} 
                             onChange={handleInputChange} 
                             placeholder="example@email.com" 
+                            className= {formErrors.email ? 'input-error' : ''}
                         />
+                    
+                        {formErrors.email &&   
+                            <p className="error-message">
+                                <FontAwesomeIcon icon={faCircleInfo} /> 
+                                {formErrors.email}
+                            </p>
+                        }
                     </div>
 
                     <div className="form-group">
@@ -211,7 +227,14 @@ export default function TicketForm() {
                             value={formData.github} 
                             onChange={handleInputChange} 
                             placeholder="@yourusername" 
+                            className={formErrors.github ? 'input-error' : ''}
                         />
+                        {formErrors.github &&
+                            <p className="error-message">
+                                <FontAwesomeIcon icon={faCircleInfo} /> 
+                                {formErrors.github}
+                            </p>
+                        }
                     </div>
                 </div>
                 
