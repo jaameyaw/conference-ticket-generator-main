@@ -123,6 +123,7 @@ export default function TicketForm() {
             isValid = false;
         } else if (!githubRegex.test(formData.github)) {
             errors.github = 'Please enter a valid GitHub username';
+            isValid = false;
         }
 
         // Avatar validation
