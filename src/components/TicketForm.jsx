@@ -138,9 +138,16 @@ export default function TicketForm() {
         return isValid;
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            // Form is valid, proceed with submission logic
+            console.log('Form submitted:', formData, avatar);
+        }
+    }
 
     return (
-        <form  className="ticket-form">
+        <form  className="ticket-form" onSubmit={handleSubmit}>
             <div className="form-container">
                 <div className="upload-section">
                     <label htmlFor="avatar-input">Upload Profile Picture</label>
